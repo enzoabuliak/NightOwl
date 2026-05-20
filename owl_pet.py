@@ -2,8 +2,8 @@ import json
 import os
 import random
 
-APP_DIR = os.path.dirname(os.path.abspath(__file__))
-PET_FILE = os.path.join(APP_DIR, "pet.json")
+from paths import DATA_DIR
+PET_FILE = os.path.join(DATA_DIR, "pet.json")
 
 HUNGER_PER_TICK  = 4   # points per 60-second tick while active
 LATE_BONUS       = 3   # extra hunger after 10 PM (owl hates late nights)

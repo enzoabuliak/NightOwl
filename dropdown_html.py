@@ -11,7 +11,7 @@ window.webkit.messageHandlers.nightowl.
 import os
 from datetime import datetime
 
-APP_DIR = os.path.dirname(os.path.abspath(__file__))
+from paths import APP_DIR
 
 
 # ── Owl SVG (geometric Bauhaus, mirrors owl.jsx) ─────────────────────────────

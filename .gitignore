@@ -6,8 +6,11 @@ __pycache__/
 *.pyd
 .Python
 *.egg-info/
+
+# ── py2app build artifacts ──────────────────────────────────────
 build/
 dist/
+*.dmg
 
 # ── NightOwl runtime data (private, per-machine) ────────────────
 data.json

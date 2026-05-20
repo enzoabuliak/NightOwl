@@ -11,8 +11,8 @@ import os
 import subprocess
 from datetime import datetime
 
-APP_DIR  = os.path.dirname(os.path.abspath(__file__))
-OUT_HTML = os.path.join(APP_DIR, "dashboard.html")
+from paths import APP_DIR, DATA_DIR
+OUT_HTML = os.path.join(DATA_DIR, "dashboard.html")
 
 # Only the design files we actually need for the dashboard itself.
 # (We drop menubar.jsx and tweaks-panel.jsx — those were preview-only.)

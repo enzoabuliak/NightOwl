@@ -4,8 +4,8 @@ import re
 import subprocess
 from datetime import datetime, date, timedelta
 
-APP_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(APP_DIR, "data.json")
+from paths import DATA_DIR
+DATA_FILE = os.path.join(DATA_DIR, "data.json")
 
 
 def get_idle_seconds():

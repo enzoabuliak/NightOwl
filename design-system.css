@@ -1,0 +1,331 @@
+/* =============================================================
+   Enzo Abuliak — Design Tokens
+   ─────────────────────────────────────────────────────────────
+   Palette  · Flexoki by Steph Ango (kepano)
+              https://stephango.com/flexoki
+   Type     · Space Grotesk (Swiss/grotesque) + JetBrains Mono
+   Default  · DARK theme. Light theme via [data-theme="light"].
+   ============================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* =========================================================
+     1.  FLEXOKI — Extended palette (raw values, do not bind)
+     ========================================================= */
+
+  /* Base — warm monochromatic */
+  --flx-paper:    #FFFCF0;
+  --flx-base-50:  #F2F0E5;
+  --flx-base-100: #E6E4D9;
+  --flx-base-150: #DAD8CE;
+  --flx-base-200: #CECDC3;
+  --flx-base-300: #B7B5AC;
+  --flx-base-400: #9F9D96;
+  --flx-base-500: #878580;
+  --flx-base-600: #6F6E69;
+  --flx-base-700: #575653;
+  --flx-base-800: #403E3C;
+  --flx-base-850: #343331;
+  --flx-base-900: #282726;
+  --flx-base-950: #1C1B1A;
+  --flx-black:    #100F0F;
+
+  /* Red */
+  --flx-red-50:  #FFE1D5;  --flx-red-100: #FFCABB;  --flx-red-150: #FDB2A2;
+  --flx-red-200: #F89A8A;  --flx-red-300: #E8705F;  --flx-red-400: #D14D41;
+  --flx-red-500: #C03E35;  --flx-red-600: #AF3029;  --flx-red-700: #942822;
+  --flx-red-800: #6C201C;  --flx-red-850: #551B18;  --flx-red-900: #3E1715;
+  --flx-red-950: #261312;
+
+  /* Orange */
+  --flx-orange-50:  #FFE7CE;  --flx-orange-100: #FED3AF;  --flx-orange-150: #FCC192;
+  --flx-orange-200: #F9AE77;  --flx-orange-300: #EC8B49;  --flx-orange-400: #DA702C;
+  --flx-orange-500: #CB6120;  --flx-orange-600: #BC5215;  --flx-orange-700: #9D4310;
+  --flx-orange-800: #71320D;  --flx-orange-850: #59290D;  --flx-orange-900: #40200D;
+  --flx-orange-950: #27180E;
+
+  /* Yellow */
+  --flx-yellow-50:  #FAEEC6;  --flx-yellow-100: #F6E2A0;  --flx-yellow-150: #F1D67E;
+  --flx-yellow-200: #ECCB60;  --flx-yellow-300: #DFB431;  --flx-yellow-400: #D0A215;
+  --flx-yellow-500: #BE9207;  --flx-yellow-600: #AD8301;  --flx-yellow-700: #8E6B01;
+  --flx-yellow-800: #664D01;  --flx-yellow-850: #503D02;  --flx-yellow-900: #3A2D04;
+  --flx-yellow-950: #241E08;
+
+  /* Green */
+  --flx-green-50:  #EDEECF;  --flx-green-100: #DDE2B2;  --flx-green-150: #CDD597;
+  --flx-green-200: #BEC97E;  --flx-green-300: #A0AF54;  --flx-green-400: #879A39;
+  --flx-green-500: #768D21;  --flx-green-600: #66800B;  --flx-green-700: #536907;
+  --flx-green-800: #3D4C07;  --flx-green-850: #313D07;  --flx-green-900: #252D09;
+  --flx-green-950: #1A1E0C;
+
+  /* Cyan */
+  --flx-cyan-50:  #DDF1E4;  --flx-cyan-100: #BFE8D9;  --flx-cyan-150: #A2DECE;
+  --flx-cyan-200: #87D3C3;  --flx-cyan-300: #5ABDAC;  --flx-cyan-400: #3AA99F;
+  --flx-cyan-500: #2F968D;  --flx-cyan-600: #24837B;  --flx-cyan-700: #1C6C66;
+  --flx-cyan-800: #164F4A;  --flx-cyan-850: #143F3C;  --flx-cyan-900: #122F2C;
+  --flx-cyan-950: #101F1D;
+
+  /* Blue */
+  --flx-blue-50:  #E1ECEB;  --flx-blue-100: #C6DDE8;  --flx-blue-150: #ABCFE2;
+  --flx-blue-200: #92BFDB;  --flx-blue-300: #66A0C8;  --flx-blue-400: #4385BE;
+  --flx-blue-500: #3171B2;  --flx-blue-600: #205EA6;  --flx-blue-700: #1A4F8C;
+  --flx-blue-800: #163B66;  --flx-blue-850: #133051;  --flx-blue-900: #12253B;
+  --flx-blue-950: #101A24;
+
+  /* Purple */
+  --flx-purple-50:  #F0EAEC;  --flx-purple-100: #E2D9E9;  --flx-purple-150: #D3CAE6;
+  --flx-purple-200: #C4B9E0;  --flx-purple-300: #A699D0;  --flx-purple-400: #8B7EC8;
+  --flx-purple-500: #735EB5;  --flx-purple-600: #5E409D;  --flx-purple-700: #4F3685;
+  --flx-purple-800: #3C2A62;  --flx-purple-850: #31234E;  --flx-purple-900: #261C39;
+  --flx-purple-950: #1A1623;
+
+  /* Magenta */
+  --flx-magenta-50:  #FEE4E5;  --flx-magenta-100: #FCCFDA;  --flx-magenta-150: #F9B9CF;
+  --flx-magenta-200: #F4A4C2;  --flx-magenta-300: #E47DA8;  --flx-magenta-400: #CE5D97;
+  --flx-magenta-500: #B74583;  --flx-magenta-600: #A02F6F;  --flx-magenta-700: #87285E;
+  --flx-magenta-800: #641F46;  --flx-magenta-850: #4F1B39;  --flx-magenta-900: #39172B;
+  --flx-magenta-950: #24131D;
+
+  /* =========================================================
+     2.  SEMANTIC ALIASES (Flexoki convention)
+         Default = DARK theme.
+         Per Flexoki: dark uses *-400 ("primary") + *-600 ("strong").
+         Light theme is opt-in via [data-theme="light"].
+     ========================================================= */
+
+  /* Backgrounds */
+  --bg:    var(--flx-black);          /* main background */
+  --bg-2:  var(--flx-base-950);       /* secondary background / cards */
+
+  /* UI surfaces (borders, inputs, chrome) */
+  --ui:    var(--flx-base-900);       /* normal */
+  --ui-2:  var(--flx-base-850);       /* hover */
+  --ui-3:  var(--flx-base-800);       /* active */
+
+  /* Text */
+  --tx:    var(--flx-base-200);       /* primary */
+  --tx-2:  var(--flx-base-500);       /* muted */
+  --tx-3:  var(--flx-base-700);       /* faint */
+  --tx-inv: var(--flx-paper);
+
+  /* Accents — primary (use for fills/icons in dark) */
+  --re:    var(--flx-red-400);
+  --or:    var(--flx-orange-400);
+  --ye:    var(--flx-yellow-400);
+  --gr:    var(--flx-green-400);
+  --cy:    var(--flx-cyan-400);
+  --bl:    var(--flx-blue-400);
+  --pu:    var(--flx-purple-400);
+  --ma:    var(--flx-magenta-400);
+
+  /* Accents — strong (use on light surfaces; -2 suffix per spec) */
+  --re-2:  var(--flx-red-600);
+  --or-2:  var(--flx-orange-600);
+  --ye-2:  var(--flx-yellow-600);
+  --gr-2:  var(--flx-green-600);
+  --cy-2:  var(--flx-cyan-600);
+  --bl-2:  var(--flx-blue-600);
+  --pu-2:  var(--flx-purple-600);
+  --ma-2:  var(--flx-magenta-600);
+
+  /* Roles (Enzo's brand uses orange as primary accent) */
+  --accent:        var(--or);
+  --accent-strong: var(--or-2);
+  --link:          var(--cy);              /* per spec: cy = links / active */
+  --success:       var(--gr);
+  --warning:       var(--ye);
+  --danger:        var(--re);
+  --info:          var(--bl);
+
+  /* =========================================================
+     3.  TYPE
+     ========================================================= */
+
+  --font-sans:    "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Scale — Swiss/grotesque, generous, no decoration */
+  --fs-12: 12px;     /* micro / eyebrow */
+  --fs-14: 14px;     /* small */
+  --fs-16: 16px;     /* body */
+  --fs-18: 18px;     /* body lg */
+  --fs-20: 20px;
+  --fs-24: 24px;     /* h4 */
+  --fs-32: 32px;     /* h3 */
+  --fs-44: 44px;     /* h2 */
+  --fs-64: 64px;     /* h1 */
+  --fs-96: 96px;     /* display */
+  --fs-160: 160px;   /* hero */
+
+  --lh-tight: 1.02;
+  --lh-snug:  1.15;
+  --lh-base:  1.5;
+  --lh-loose: 1.7;
+
+  --tr-tight: -0.03em;
+  --tr-snug:  -0.015em;
+  --tr-base:   0em;
+  --tr-wide:   0.08em;
+  --tr-mega:   0.16em;   /* uppercase eyebrow */
+
+  /* =========================================================
+     4.  SPACE  (4 / 8pt)
+     ========================================================= */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* =========================================================
+     5.  RADII — deliberately small (Swiss/Bauhaus)
+     ========================================================= */
+  --r-0: 0px;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-pill: 999px;   /* used sparingly, only for tags/avatars */
+
+  /* =========================================================
+     6.  BORDERS
+     ========================================================= */
+  --bw-1: 1px;
+  --bw-2: 2px;
+  --bw-rule: 1px;
+
+  /* =========================================================
+     7.  ELEVATION — quiet. Rules and color separate layers,
+         not shadow. Reserve shadow for floating UI only.
+     ========================================================= */
+  --sh-1: 0 1px 0 0 rgba(0,0,0,0.4);
+  --sh-2: 0 2px 8px -2px rgba(0,0,0,0.5);
+  --sh-3: 0 8px 24px -6px rgba(0,0,0,0.6);
+  --sh-focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--or);
+
+  /* =========================================================
+     8.  MOTION
+     ========================================================= */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in:  cubic-bezier(0.6, 0, 0.8, 0.3);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 80ms;
+  --dur-2: 160ms;
+  --dur-3: 240ms;
+  --dur-4: 400ms;
+
+  /* =========================================================
+     9.  GRID
+     ========================================================= */
+  --grid-cols: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 32px;
+  --content-max: 1280px;
+}
+
+/* =============================================================
+   LIGHT theme — opt-in via [data-theme="light"]
+   Per Flexoki: light uses *-600 ("primary") + *-400 ("strong").
+   ============================================================= */
+[data-theme="light"] {
+  --bg:    var(--flx-paper);
+  --bg-2:  var(--flx-base-50);
+
+  --ui:    var(--flx-base-100);
+  --ui-2:  var(--flx-base-150);
+  --ui-3:  var(--flx-base-200);
+
+  --tx:    var(--flx-black);
+  --tx-2:  var(--flx-base-600);
+  --tx-3:  var(--flx-base-300);
+  --tx-inv: var(--flx-paper);
+
+  /* In light mode, primary accent is the *-600 ("re", "or", …)
+     and strong is the *-400 ("re-2"). This matches the spec
+     table — the *unprefixed* alias is always the primary text
+     accent for the active theme. */
+  --re:    var(--flx-red-600);     --re-2: var(--flx-red-400);
+  --or:    var(--flx-orange-600);  --or-2: var(--flx-orange-400);
+  --ye:    var(--flx-yellow-600);  --ye-2: var(--flx-yellow-400);
+  --gr:    var(--flx-green-600);   --gr-2: var(--flx-green-400);
+  --cy:    var(--flx-cyan-600);    --cy-2: var(--flx-cyan-400);
+  --bl:    var(--flx-blue-600);    --bl-2: var(--flx-blue-400);
+  --pu:    var(--flx-purple-600);  --pu-2: var(--flx-purple-400);
+  --ma:    var(--flx-magenta-600); --ma-2: var(--flx-magenta-400);
+
+  --accent:        var(--or);
+  --accent-strong: var(--or-2);
+}
+
+/* =============================================================
+   ELEMENT DEFAULTS
+   ============================================================= */
+html, body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--or); color: var(--flx-black); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--tx);
+  letter-spacing: var(--tr-snug);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+h1 { font-size: var(--fs-64); letter-spacing: var(--tr-tight); }
+h2 { font-size: var(--fs-44); }
+h3 { font-size: var(--fs-32); }
+h4 { font-size: var(--fs-24); line-height: var(--lh-snug); }
+h5 { font-size: var(--fs-18); line-height: var(--lh-snug); }
+h6 {
+  font-size: var(--fs-12);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-mega);
+  font-weight: 500;
+  color: var(--tx-2);
+}
+
+p { margin: 0; line-height: var(--lh-base); color: var(--tx); }
+small { font-size: var(--fs-14); color: var(--tx-2); }
+
+a { color: var(--cy); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--or); }
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--tx);
+}
+code { background: var(--bg-2); padding: 0.1em 0.35em; border: 1px solid var(--ui); }
+
+hr {
+  border: 0;
+  border-top: var(--bw-rule) solid var(--ui);
+  margin: var(--s-6) 0;
+}
+
+/* Utility classes */
+.eyebrow {
+  font-size: var(--fs-12);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-mega);
+  color: var(--tx-2);
+  font-weight: 500;
+}
+.mono { font-family: var(--font-mono); }
+.num  { font-variant-numeric: tabular-nums; }
+.rule { border-top: 1px solid var(--ui); }

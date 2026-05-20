@@ -1,0 +1,29 @@
+# ── Python ──────────────────────────────────────────────────────
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+build/
+dist/
+
+# ── NightOwl runtime data (private, per-machine) ────────────────
+data.json
+pet.json
+
+# ── Generated artifacts ─────────────────────────────────────────
+dashboard.html
+weekly_report.png
+
+# ── macOS ───────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Editor / IDE ────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo

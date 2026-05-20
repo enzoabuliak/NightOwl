@@ -1,0 +1,3 @@
+rumps
+matplotlib
+pyobjc-framework-WebKit

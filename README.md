@@ -35,7 +35,7 @@ python3 --version
 If that prints a version, clone and set up:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nightowl.git
+git clone https://github.com/enzoabuliak/nightowl.git
 cd nightowl
 bash setup.sh
 ```

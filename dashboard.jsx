@@ -131,6 +131,14 @@ function DashHeader({ timeframe, hour, mood, owlStyle }) {
 
 // ── Layout A — Stat row + mid panels + chart ─────────────────────────────────
 function LayoutCards({ data, timeframe, score, scoreInfo, today, lateCount, avgRaw, worstRaw, fmtRaw, hour, mood, owlStyle }) {
+  const shameTitle = {
+    day:   "Today's shame score",
+    week:  "Weekly shame score",
+    month: "Monthly shame score",
+    '6mo': "6-month shame score",
+    all:   "All-time shame score",
+  }[timeframe] || "Shame score";
+
   return (
     <div className="dash-cards">
       <div className="stats-grid">
@@ -145,7 +153,7 @@ function LayoutCards({ data, timeframe, score, scoreInfo, today, lateCount, avgR
       <div className="mid-row">
         <div className="panel">
           <div className="panel-top">
-            <div className="panel-title">Weekly shame score</div>
+            <div className="panel-title">{shameTitle}</div>
             <div className="panel-eyebrow">— Score</div>
           </div>
           <div className="shame-figure">

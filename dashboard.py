@@ -53,7 +53,7 @@ def patched_dashboard_jsx():
     component's return block so the JSX stays valid.
     """
     src_path = os.path.join(APP_DIR, "dashboard.jsx")
-    with open(src_path) as f:
+    with open(src_path, "r", encoding="utf-8") as f:
         src = f.read()
 
     old_block = (
@@ -115,6 +115,54 @@ def patched_dashboard_jsx():
 
 # ── Minimal production app (no scrubber, no tweaks panel, no menu mockup) ───
 
+# ── Mock-data overrides ─────────────────────────────────────────────────────
+#
+# data.jsx ships with fake stop-time data for the Today / Month / 6 months /
+# All time tabs so the design preview always looks populated. In production
+# we don't want those numbers showing up before the user has actually tracked
+# enough nights to fill them in. This script runs as a `text/babel` block
+# *after* data.jsx (so the mock functions exist) and *before* app.jsx mounts
+# (so its replacements are in place when the dashboard first renders).
+#
+# Each replacement returns the same shape data.jsx returns (so the chart
+# component doesn't choke on missing fields) but with `raw: null` everywhere.
+# StopChart at dashboard.jsx:475 already skips null bars, so the result is
+# an empty chart frame — axis, threshold lines, and date labels intact.
+EMPTY_MOCK_OVERRIDES_JSX = """
+// Replace data.jsx's mock generators with empty versions so non-Week tabs
+// show empty charts until the user has tracked enough history.
+
+window.mockToday = function(hour) { return []; };
+
+window.mockMonth = function(hour) {
+  const out = [];
+  for (let i = 1; i <= 30; i++) out.push({ day: i, raw: null });
+  return out;
+};
+
+window.mockSixMonths = function(hour) {
+  const months = ['Dec','Jan','Feb','Mar','Apr','May'];
+  const out = [];
+  for (let m = 0; m < 6; m++)
+    for (let w = 0; w < 4; w++)
+      out.push({
+        label: months[m] + ' W' + (w+1),
+        month: months[m],
+        week:  w + 1,
+        raw:   null,
+      });
+  return out;
+};
+
+window.mockAllTime = function(hour) {
+  return [
+    "Aug ’25","Sep ’25","Oct ’25","Nov ’25","Dec ’25",
+    "Jan ’26","Feb ’26","Mar ’26","Apr ’26","May ’26"
+  ].map(label => ({ label, raw: null }));
+};
+"""
+
+
 PRODUCTION_APP_JSX = """
 // Production NightOwl dashboard — just the dashboard content.
 function NightOwlApp() {
@@ -174,7 +222,7 @@ def build_html(week_data, owl_hunger, owl_feeds, owl_died):
     for fname in CSS_FILES:
         path = os.path.join(APP_DIR, fname)
         if os.path.exists(path):
-            with open(path) as f:
+            with open(path, "r", encoding="utf-8") as f:
                 css_blocks.append(f"/* {fname} */\n" + f.read())
     css_blocks.append(PRODUCTION_CSS_OVERRIDES)
 
@@ -189,7 +237,7 @@ def build_html(week_data, owl_hunger, owl_feeds, owl_died):
         else:
             path = os.path.join(APP_DIR, fname)
             if os.path.exists(path):
-                with open(path) as f:
+                with open(path, "r", encoding="utf-8") as f:
                     jsx_blocks.append(f"/* ── {fname} ── */\n" + f.read())
 
     css_tag  = "<style>\n" + "\n\n".join(css_blocks) + "\n</style>"
@@ -197,7 +245,8 @@ def build_html(week_data, owl_hunger, owl_feeds, owl_died):
         f'<script type="text/babel">\n{block}\n</script>'
         for block in jsx_blocks
     )
-    app_tag  = f'<script type="text/babel">\n{PRODUCTION_APP_JSX}\n</script>'
+    overrides_tag = f'<script type="text/babel">\n{EMPTY_MOCK_OVERRIDES_JSX}\n</script>'
+    app_tag       = f'<script type="text/babel">\n{PRODUCTION_APP_JSX}\n</script>'
 
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -232,6 +281,9 @@ window.__REAL_DIED   = {owl_died};
 <!-- Design components -->
 {jsx_tags}
 
+<!-- Mock-data overrides — empty out non-Week tabs until real data exists -->
+{overrides_tag}
+
 <!-- App entry point -->
 {app_tag}
 </body>
@@ -247,6 +299,6 @@ def open_dashboard(week_data, owl):
         owl_feeds  = owl.total_feeds,
         owl_died   = owl.times_died,
     )
-    with open(OUT_HTML, "w") as f:
+    with open(OUT_HTML, "w", encoding="utf-8") as f:
         f.write(html)
     subprocess.run(["open", OUT_HTML])

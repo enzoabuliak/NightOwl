@@ -131,7 +131,7 @@ def _inline_css():
     blobs = []
     for p in paths:
         if os.path.exists(p):
-            with open(p) as f:
+            with open(p, "r", encoding="utf-8") as f:
                 blobs.append(f.read())
     return "\n".join(blobs)
 

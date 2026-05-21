@@ -45,7 +45,7 @@ class OwlPet:
     def _load(self):
         try:
             if os.path.exists(PET_FILE):
-                with open(PET_FILE) as f:
+                with open(PET_FILE, "r", encoding="utf-8") as f:
                     d = json.load(f)
                     self.hunger      = d.get("hunger", 0)
                     self.total_feeds = d.get("total_feeds", 0)
@@ -58,7 +58,7 @@ class OwlPet:
         self.times_died  = 0
 
     def _save(self):
-        with open(PET_FILE, "w") as f:
+        with open(PET_FILE, "w", encoding="utf-8") as f:
             json.dump({
                 "hunger":      self.hunger,
                 "total_feeds": self.total_feeds,

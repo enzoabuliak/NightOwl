@@ -29,14 +29,14 @@ class ActivityTracker:
     def _load(self):
         if os.path.exists(DATA_FILE):
             try:
-                with open(DATA_FILE, "r") as f:
+                with open(DATA_FILE, "r", encoding="utf-8") as f:
                     return json.load(f)
             except Exception:
                 pass
         return {}
 
     def _save(self):
-        with open(DATA_FILE, "w") as f:
+        with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(self.data, f, indent=2)
 
     def record_activity(self):

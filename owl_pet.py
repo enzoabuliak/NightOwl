@@ -5,10 +5,12 @@ import random
 from paths import DATA_DIR
 PET_FILE = os.path.join(DATA_DIR, "pet.json")
 
-HUNGER_PER_TICK  = 4   # points per 60-second tick while active
-LATE_BONUS       = 3   # extra hunger after 10 PM (owl hates late nights)
-IDLE_RECOVERY    = 2   # hunger drops slowly while you're idle
-FEED_AMOUNT      = 45  # how much one feed reduces hunger
+HUNGER_PER_TICK  = 1   # points per 60-second tick while active
+                       # → ~100 min (1h 40m) to reach death from zero at normal hours
+LATE_BONUS       = 1   # extra after 10 PM — owl dislikes late nights
+                       # → ~50 min from zero during late sessions
+IDLE_RECOVERY    = 1   # hunger drops while you're idle (slower than before)
+FEED_AMOUNT      = 45  # how much one feed reduces hunger (unchanged)
 
 HUNGER_LINES = {
     "hungry": [

@@ -39,12 +39,25 @@ class ActivityTracker:
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(self.data, f, indent=2)
 
+    @staticmethod
+    def _session_date():
+        """
+        Which date should this activity be filed under?
+        Midnight–6 AM belongs to the previous calendar day so that a session
+        starting at 10 PM Tuesday and running to 2 AM Wednesday is stored
+        entirely under Tuesday — not split at midnight.
+        """
+        now = datetime.now()
+        if now.hour < 6:
+            return (date.today() - timedelta(days=1)).isoformat()
+        return date.today().isoformat()
+
     def record_activity(self):
         """Check if user is active and record it. Returns True if active."""
         if get_idle_seconds() > 300:  # idle more than 5 minutes = not active
             return False
 
-        today = date.today().isoformat()
+        today  = self._session_date()
         now_str = datetime.now().isoformat()
 
         if today not in self.data:
@@ -58,7 +71,7 @@ class ActivityTracker:
         return True
 
     def get_today_stats(self):
-        today = date.today().isoformat()
+        today = self._session_date()
         if today not in self.data:
             return "No activity recorded today yet.\nStart working and I'll begin tracking!"
 
